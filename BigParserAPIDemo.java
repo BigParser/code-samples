@@ -48,13 +48,13 @@ public class BigParserAPIDemo {
         String queryTableHeaderURL = "https://www.bigparser.com/APIServices/api/grid/headers?gridId=" + gridId;
 
         //setting the API request headers
-        HashMap<String, String> queryTableHeaders = new HashMap<String, String>();
-        queryTableHeaders.put("Content-Type", "application/json");
-        queryTableHeaders.put("authId", authId);
+        HashMap<String, String> requestHeaders = new HashMap<String, String>();
+        requestHeaders.put("Content-Type", "application/json");
+        requestHeaders.put("authId", authId);
 
 
         //Making API call to get the headers of grid
-        String queryTableHeaderResponse = mageGETCall(queryTableHeaderURL, queryTableHeaders);
+        String queryTableHeaderResponse = mageGETCall(queryTableHeaderURL, requestHeaders);
         System.out.println("queryTable Header RESPONSE : " + queryTableHeaderResponse + "\n");
 
         //2b. Getting the rows of the grid
@@ -67,14 +67,14 @@ public class BigParserAPIDemo {
         String queryTableURL = "https://www.bigparser.com/APIServices/api/query/table?startIndex=0&endIndex=50";
 
         //Making API call to get the data rows of grid
-        String quertTableResponse = makePOSTCall(queryTableURL, queryTableHeaders, queryTableRequest);
+        String quertTableResponse = makePOSTCall(queryTableURL, requestHeaders, queryTableRequest);
         System.out.println("queryTable Rows RESPONSE : " + quertTableResponse + "\n");
         //2.Fetching the grid headers & data from the Grid using gridId provided <END>
-
     }
 
     //This is a generic java method which can be used for any REST GET API call
     private static String mageGETCall(String uri, HashMap<String, String> headers) {
+
         StringBuffer response = new StringBuffer();
         try {
             URL url = new URL(uri);
@@ -100,7 +100,6 @@ public class BigParserAPIDemo {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
-
             e.printStackTrace();
         }
         return response.toString();
@@ -108,6 +107,7 @@ public class BigParserAPIDemo {
 
     //This is a generic java method which can be used for any REST POST API call
     private static String makePOSTCall(String uri, HashMap<String, String> headers, String body) {
+
         StringBuffer response = new StringBuffer();
         try {
 
@@ -136,14 +136,12 @@ public class BigParserAPIDemo {
             while ((output = br.readLine()) != null) {
                 response.append(output);
             }
-
             conn.disconnect();
 
         } catch (MalformedURLException e) {
 
             e.printStackTrace();
         } catch (IOException e) {
-
             e.printStackTrace();
         }
         return response.toString();
