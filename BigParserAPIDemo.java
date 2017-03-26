@@ -29,12 +29,12 @@ public class BigParserAPIDemo {
         loginHeaders.put("Content-Type", "application/json");
 
         String loginResponse = makePOSTCall(loginUri, loginHeaders, loginRequest);
-        System.out.println("LOGIN RESPONSE : " + loginResponse+"\n");
+        System.out.println("LOGIN RESPONSE : " + loginResponse + "\n");
 
         int startOfAuthID = loginResponse.indexOf("authId");
         //fetch authId for future calls
         String authId = loginResponse.substring(startOfAuthID + 9, startOfAuthID + 45);
-        System.out.println("authId : " + authId+"\n");
+        System.out.println("authId : " + authId + "\n");
         //1. How to login and obtain an authId <END>
 
 
@@ -55,7 +55,7 @@ public class BigParserAPIDemo {
 
         //Making API call to get the headers of grid
         String queryTableHeaderResponse = mageGETCall(queryTableHeaderURL, queryTableHeaders);
-          System.out.println("queryTable Header RESPONSE : " + queryTableHeaderResponse+"\n");
+        System.out.println("queryTable Header RESPONSE : " + queryTableHeaderResponse + "\n");
 
         //2b. Getting the rows of the grid
         //Replace rowcount with the no. of rows you need. You can also customize the queryTableRequest to add additional parameters
@@ -68,7 +68,7 @@ public class BigParserAPIDemo {
 
         //Making API call to get the data rows of grid
         String quertTableResponse = makePOSTCall(queryTableURL, queryTableHeaders, queryTableRequest);
-        System.out.println("queryTable Rows RESPONSE : " + quertTableResponse+"\n");
+        System.out.println("queryTable Rows RESPONSE : " + quertTableResponse + "\n");
         //2.Fetching the grid headers & data from the Grid using gridId provided <END>
 
     }
@@ -77,7 +77,6 @@ public class BigParserAPIDemo {
     private static String mageGETCall(String uri, HashMap<String, String> headers) {
         StringBuffer response = new StringBuffer();
         try {
-
             URL url = new URL(uri);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -94,21 +93,15 @@ public class BigParserAPIDemo {
                     (conn.getInputStream())));
 
             String output;
-
             while ((output = br.readLine()) != null) {
                 response.append(output);
             }
-
             conn.disconnect();
-
         } catch (MalformedURLException e) {
-
             e.printStackTrace();
-
         } catch (IOException e) {
 
             e.printStackTrace();
-
         }
         return response.toString();
     }
@@ -140,7 +133,6 @@ public class BigParserAPIDemo {
                     (conn.getInputStream())));
 
             String output;
-
             while ((output = br.readLine()) != null) {
                 response.append(output);
             }
@@ -150,11 +142,9 @@ public class BigParserAPIDemo {
         } catch (MalformedURLException e) {
 
             e.printStackTrace();
-
         } catch (IOException e) {
 
             e.printStackTrace();
-
         }
         return response.toString();
     }
