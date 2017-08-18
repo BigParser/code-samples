@@ -67,8 +67,8 @@ public class BigParserAPIDemo {
         String queryTableURL = "https://www.bigparser.com/APIServices/api/query/table?startIndex=0&endIndex=50";
 
         //Making API call to get the data rows of grid
-        String quertTableResponse = makePOSTCall(queryTableURL, requestHeaders, queryTableRequest);
-        System.out.println("queryTable Rows RESPONSE : " + quertTableResponse + "\n");
+        String queryTableResponse = makePOSTCall(queryTableURL, requestHeaders, queryTableRequest);
+        System.out.println("queryTable Rows RESPONSE : " + queryTableResponse + "\n");
         //2.Fetching the grid headers & data from the Grid using gridId provided <END>
     }
 
