@@ -54,7 +54,7 @@ public class BigParserAPIDemo {
 
 
         //Making API call to get the headers of grid
-        String queryTableHeaderResponse = mageGETCall(queryTableHeaderURL, requestHeaders);
+        String queryTableHeaderResponse = makeGETCall(queryTableHeaderURL, requestHeaders);
         System.out.println("queryTable Header RESPONSE : " + queryTableHeaderResponse + "\n");
 
         //2b. Getting the rows of the grid
@@ -67,13 +67,13 @@ public class BigParserAPIDemo {
         String queryTableURL = "https://www.bigparser.com/APIServices/api/query/table?startIndex=0&endIndex=50";
 
         //Making API call to get the data rows of grid
-        String quertTableResponse = makePOSTCall(queryTableURL, requestHeaders, queryTableRequest);
-        System.out.println("queryTable Rows RESPONSE : " + quertTableResponse + "\n");
+        String queryTableResponse = makePOSTCall(queryTableURL, requestHeaders, queryTableRequest);
+        System.out.println("queryTable Rows RESPONSE : " + queryTableResponse + "\n");
         //2.Fetching the grid headers & data from the Grid using gridId provided <END>
     }
 
     //This is a generic java method which can be used for any REST GET API call
-    private static String mageGETCall(String uri, HashMap<String, String> headers) {
+    private static String makeGETCall(String uri, HashMap<String, String> headers) {
 
         StringBuffer response = new StringBuffer();
         try {
